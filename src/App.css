@@ -25,6 +25,61 @@
   padding: 16px;
 }
 
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+/* 버튼 공통 디자인 */
+button {
+  padding: 6px 12px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  background: #fff;
+  color: #344054;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+button:hover {
+  background: #f5f7fa;
+  border-color: #b8c0cc;
+}
+
+button:active {
+  background: #eceff3;
+}
+
+button:focus-visible {
+  outline: 2px solid #4c8bf5;
+  outline-offset: 2px;
+}
+
+/* 나란히 놓인 버튼(완료/삭제) 사이 간격 */
+button + button {
+  margin-left: 6px;
+}
+
+/* 주요 동작(Add Todo)은 강조색 */
+.add-todo-form button[type="submit"] {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+.add-todo-form button[type="submit"]:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
 .card-list {
   display: flex;
   flex-direction: column;

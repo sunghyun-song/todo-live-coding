@@ -1,20 +1,29 @@
-import { useTodoBoard } from "./hooks/useTodoBoard";
 import { TodoList } from "./components/TodoList";
 import { CompletedList } from "./components/CompletedList";
 import "./App.css";
+import type { TodoItem } from "./types";
 
 function App() {
-  const { todos, completed, addTodo, completeTodo, removeCompleted, reset } = useTodoBoard();
+
+  const todos: TodoItem[] = [
+    {
+      id: "1",
+      text: "할 일 1",
+    },
+    {
+      id: "2",
+      text: "할 일 2",
+    },
+  ]
 
   return (
     <div className="app">
       <header className="app-header">
         <h1>Todo Board</h1>
-        <button onClick={reset}>Reset</button>
       </header>
       <main className="board">
-        <TodoList todos={todos} onAdd={addTodo} onComplete={completeTodo} />
-        <CompletedList completed={completed} onRemove={removeCompleted} />
+        <TodoList todos={todos} />
+        <CompletedList todos={[]} />
       </main>
     </div>
   );
