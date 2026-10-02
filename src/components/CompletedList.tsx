@@ -1,5 +1,5 @@
 import type { TodoItem } from "../types";
-import { CompletedCard } from "./CompletedCard";
+import { Card } from "./Card";
 
 interface CompletedListProps {
   completed: TodoItem[];
@@ -14,7 +14,7 @@ export function CompletedList({ completed, onRemove }: CompletedListProps) {
       <div className="card-list">
         {completed.length === 0 && <p className="empty">완료된 일감이 없습니다.</p>}
         {completed.map((todo) => (
-          <CompletedCard key={todo.id} todo={todo} onRemove={onRemove} />
+          <Card key={todo.id} todo={todo} actionLabel="삭제" onAction={onRemove} completed />
         ))}
       </div>
     </section>

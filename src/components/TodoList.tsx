@@ -1,5 +1,5 @@
 import type { TodoItem } from "../types";
-import { TodoCard } from "./TodoCard";
+import { Card } from "./Card";
 import { AddTodoForm } from "./AddTodoForm";
 
 interface TodoListProps {
@@ -17,7 +17,7 @@ export function TodoList({ todos, onAdd, onComplete }: TodoListProps) {
       <div className="card-list">
         {todos.length === 0 && <p className="empty">할 일이 없습니다.</p>}
         {todos.map((todo) => (
-          <TodoCard key={todo.id} todo={todo} onComplete={onComplete} />
+          <Card key={todo.id} todo={todo} actionLabel="완료" onAction={onComplete} />
         ))}
       </div>
     </section>

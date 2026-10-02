@@ -34,9 +34,11 @@ export function useTodoBoard(): UseTodoBoardResult {
 파일(`src/hooks/useTodoBoard.ts`) 상단 주석에 정확한 초기 상태(시드 데이터)와
 각 함수가 해야 할 일이 적혀있습니다. 그대로 따라서 구현하면 됩니다.
 
-`App.tsx`와 모든 UI 컴포넌트(`TodoCard`, `CompletedCard`, `AddTodoForm`, `TodoList`,
-`CompletedList`)는 이미 완성되어 있고, 전부 `useTodoBoard`가 반환하는 값만 가지고
-동작합니다 — 즉 **이 훅 하나만 제대로 구현하면 화면 전체가 동작**합니다.
+`App.tsx`와 모든 UI 컴포넌트(`Card`, `AddTodoForm`, `TodoList`, `CompletedList`)는
+이미 완성되어 있고, 전부 `useTodoBoard`가 반환하는 값만 가지고 동작합니다 — 즉
+**이 훅 하나만 제대로 구현하면 화면 전체가 동작**합니다. `Card`는 TODO 카드와
+완료 카드가 함께 쓰는 단일 컴포넌트로, `actionLabel`/`onAction`/`completed` props로
+두 영역의 차이(버튼 라벨, 취소선 스타일)만 다르게 주입받습니다.
 
 ## 실행 방법
 
