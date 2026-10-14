@@ -1,119 +1,67 @@
 .app {
-  max-width: 720px;
+  max-width: 864px;
   margin: 0 auto;
-  padding: 24px;
-  font-family: system-ui, sans-serif;
-  text-align: left;
+  padding: 40px 32px 28px;
 }
-
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+.brand { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; letter-spacing: -.6px; }
+.brand-mark { display: grid; place-items: center; width: 30px; height: 30px; background: #345b45; color: #fff; border-radius: 10px; font-size: 20px; }
+.brand-caption { margin-left: auto; font-size: 10px; font-weight: 500; letter-spacing: 2px; color: #8c9489; }
+.header-copy { padding: 61px 0 33px; }
+.eyebrow, .section-label { font-size: 10px; font-weight: 650; letter-spacing: 1.8px; color: #778470; }
+.eyebrow { margin: 0 0 13px; }
+h1 { margin: 0; font-size: clamp(28px, 5vw, 38px); letter-spacing: -1.8px; line-height: 1.4; font-weight: 700; }
+h1 > span { color: #89a665; }
+.header-description { margin: 12px 0 0; color: #899087; font-size: 13px; line-height: 1.8; word-break: keep-all; }
+.board { display: flex; flex-direction: column; gap: 22px; }
+.board-section { padding: 27px 28px 28px; border: 1px solid #e3e7dc; border-radius: 18px; background: #fffefa; box-shadow: 0 4px 16px #384c3204; }
+.section-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 23px; }
+.section-label { margin: 0 0 9px; font-size: 9px; letter-spacing: 1.5px; }
+.section-header h2 { display: flex; align-items: center; gap: 9px; margin: 0; font-size: 18px; letter-spacing: -.6px; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #698754; }
+.section-tag { border: 1px solid #e1e7d7; background: #f2f5e9; color: #70825b; padding: 6px 10px; border-radius: 6px; font-size: 9px; font-weight: 650; letter-spacing: 1px; }
+button { border: 1px solid #e2e7dc; border-radius: 7px; padding: 7px 12px; background: #fffefa; color: #6e7c67; font-size: 12px; line-height: 1.5; transition: background .15s, border-color .15s, color .15s; }
+button:hover { background: #edf2e7; border-color: #b9c9ad; color: #365338; }
+button:active { background: #e1ead8; }
+button:focus-visible, input:focus-visible { outline: 3px solid #a2b989; outline-offset: 3px; }
+.add-todo-form { display: flex; gap: 10px; margin-bottom: 22px; }
+.add-todo-form input { width: 0; min-width: 0; flex: 1; padding: 14px 16px; border: 1px solid #e1e6db; border-radius: 9px; background: #f8f9f4; color: #303d36; font-size: 13px; transition: border-color .15s; }
+.add-todo-form input::placeholder { color: #9aA191; }
+.add-todo-form input:focus { border-color: #81996b; }
+.add-todo-form button[type='submit'] { display: flex; justify-content: center; align-items: center; gap: 7px; padding: 12px 18px; background: #365b44; border-color: #365b44; color: #fff; font-size: 13px; white-space: nowrap; }
+.add-todo-form button[type='submit']:hover { background: #284733; border-color: #284733; }
+.add-todo-form button > span { font-size: 19px; font-weight: 300; line-height: 1; }
+.card-list { display: flex; flex-direction: column; gap: 10px; }
+.card { display: flex; align-items: center; gap: 13px; padding: 15px 16px; border: 1px solid #e7eadf; border-radius: 10px; background: #fff; transition: border-color .15s, background .15s; }
+.card:hover { border-color: #c7d4bb; background: #fdfefb; }
+.card-text { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 14px; line-height: 1.6; }
+.card-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.card-actions button { padding: 5px 10px; font-size: 11px; }
+.delete-button { color: #999d94; border-color: transparent; background: transparent; }
+.delete-button:hover { color: #ae655c; background: #fcf1ee; border-color: #f0d9d2; }
+[data-testid='completed-list'] { background: #f0f3e9; border-color: #e2e7d8; box-shadow: none; }
+[data-testid='completed-list'] .status-dot { background: #a4b78f; }
+[data-testid='completed-list'] .section-header { margin-bottom: 12px; }
+[data-testid='completed-list'] .section-header > button { background: transparent; color: #8a9480; font-size: 11px; }
+[data-testid='completed-list'] .card-text { color: #8a9480; }
+.empty { margin: 0; padding: 24px 12px 27px; text-align: center; color: #87927b; font-size: 13px; }
+.empty-icon { display: grid; place-items: center; width: 38px; height: 38px; margin: 0 auto 13px; border: 1px solid #d6e0c9; border-radius: 50%; color: #9aae89; font-size: 19px; }
+.empty p { margin: 0 0 7px; }
+.empty > span:last-child:not(.empty-icon) { font-size: 11px; color: #9da592; }
+.app-footer { display: flex; align-items: center; justify-content: center; gap: 8px; padding-top: 27px; color: #99a18f; font-size: 11px; }
+.app-footer > span { color: #8b9e75; font-size: 18px; }
+@media (max-width: 560px) {
+  .app { padding: 25px 18px; }
+  .brand-caption { font-size: 8px; letter-spacing: 1px; }
+  .header-copy { padding: 44px 0 28px; }
+  .header-description { font-size: 12px; }
+  .board-section { padding: 22px 18px; border-radius: 14px; }
+  .add-todo-form { gap: 7px; }
+  .add-todo-form input { padding: 13px 11px; font-size: 12px; }
+  .add-todo-form button[type='submit'] { padding: 11px; font-size: 12px; }
+  .card { padding: 13px 11px; gap: 9px; }
+  .card-actions { gap: 2px; }
+  .card-actions button { padding: 5px 7px; }
 }
-
-.board {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.board-section {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.section-header h2 {
-  margin: 0;
-}
-
-/* 버튼 공통 디자인 */
-button {
-  padding: 6px 12px;
-  border: 1px solid #d0d5dd;
-  border-radius: 6px;
-  background: #fff;
-  color: #344054;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-}
-
-button:hover {
-  background: #f5f7fa;
-  border-color: #b8c0cc;
-}
-
-button:active {
-  background: #eceff3;
-}
-
-button:focus-visible {
-  outline: 2px solid #4c8bf5;
-  outline-offset: 2px;
-}
-
-/* 나란히 놓인 버튼(완료/삭제) 사이 간격 */
-button + button {
-  margin-left: 6px;
-}
-
-/* 주요 동작(Add Todo)은 강조색 */
-.add-todo-form button[type="submit"] {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #fff;
-}
-
-.add-todo-form button[type="submit"]:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
-}
-
-.card-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  border: 1px solid #e2e2e2;
-  border-radius: 6px;
-  background: #fafafa;
-}
-
-.card.completed {
-  background: #eef9ee;
-  text-decoration: line-through;
-  color: #666;
-}
-
-.add-todo-form {
-  display: flex;
-  gap: 8px;
-}
-
-.add-todo-form input {
-  flex: 1;
-  padding: 6px 8px;
-}
-
-.empty {
-  color: #999;
-  font-size: 14px;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
 }

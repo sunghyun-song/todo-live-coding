@@ -2,19 +2,24 @@ import type { TodoItem } from "../types";
 
 interface CardProps {
   todo?: TodoItem;
+  handleComplete?: (id: string) => void;
+  handleDelete?: (id: string) => void;
 }
 
 /**
- * TODO 카드와 완료 카드가 함께 쓰는 단일 카드 컴포넌트.
- * 내용(텍스트)과 레이아웃은 동일하고, "버튼 라벨/동작"과 "완료 스타일 여부"만
- * 호출부(TodoList/CompletedList)가 props로 다르게 주입한다.
+ * 할 일 한 개를 표시하고, 버튼을 누르면 부모가 전달한 함수에 해당 ID를 넘긴다.
+ * 삭제 버튼은 TODO에서는 완전 삭제, 완료 목록에서는 TODO 복귀로 동작한다.
  */
-export function Card({ todo }: CardProps) {
+export function Card({ todo, handleComplete, handleDelete }: CardProps) {
   return (
-    <div>
-      <span>{todo?.text}</span>
-      <button>완료</button>
-      <button>삭제</button>
+    <div className="card">
+      <span className="card-text">{todo?.text}</span>
+      <div className="card-actions">
+        {/* 완료 상태가 아니면 완료 버튼을 표시한다. 화살표 함수는 클릭할 때 실행된다. */}
+        {!todo?.completed && <button onClick={() => todo && handleComplete?.(todo.id)}>완료</button>}
+        {/* todo &&는 데이터가 있을 때만 진행하고, handleDelete?.()는 함수가 있을 때만 호출한다. */}
+        <button className="delete-button" onClick={() => todo && handleDelete?.(todo.id)}>삭제</button>
+      </div>
     </div>
   );
 }
